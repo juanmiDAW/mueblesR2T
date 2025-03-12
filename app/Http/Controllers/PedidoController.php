@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mueble;
 use App\Models\Pedido;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PedidoController extends Controller
 {
@@ -12,7 +14,10 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
+        $pedidos = Pedido::where('user_id', Auth::id())->with('mueble')->get();
+        return view('pedidos.index', [
+            'pedidos' => $pedidos,
+        ]);
     }
 
     /**
@@ -20,7 +25,13 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        //
+        if(!Auth::check()){
+            return view('welcome');
+        }
+        return view('pedidos.create', [
+            'muebles' => Mueble::all(),
+
+        ]);
     }
 
     /**
@@ -28,7 +39,14 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pedido = new pedido();
+        $pedido->user_id = Auth::id();
+        $pedido->mueble_id = $request->mueble_id;
+        $pedido->cantidad = $request->cantidad;
+
+        $pedido->save();
+
+        return redirect()->route('pedidos.index');
     }
 
     /**

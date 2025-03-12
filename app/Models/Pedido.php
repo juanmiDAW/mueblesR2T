@@ -10,7 +10,7 @@ class Pedido extends Model
     /** @use HasFactory<\Database\Factories\PedidoFactory> */
     use HasFactory;
 
-    protected $fillable = ['cantidad', 'user_id'];
+    protected $fillable = ['cantidad', 'user_id', 'mueble_id'];
 
     public function mueble(){
         return $this->belongsTo(Mueble::class);

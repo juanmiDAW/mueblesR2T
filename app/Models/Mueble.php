@@ -19,6 +19,8 @@ class Mueble extends Model
         return $this->hasMany(Pedido::class);
     }
 
+   
+
 //     public function fabricados(){
 //         return $this->morphTo(Fabricado::class);
 //     }

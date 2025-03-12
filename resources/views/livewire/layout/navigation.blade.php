@@ -46,6 +46,12 @@ new class extends Component {
                     </x-nav-link>
                 </div>
 
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('pedidos.index')" :active="request()->routeIs('pedidos.index')" wire:navigate>
+                        {{ __('Pedidos') }}
+                    </x-nav-link>
+                </div>
+
 
             </div>
 
@@ -77,7 +83,7 @@ new class extends Component {
                         </button>
                     </x-slot>
                 </x-dropdown>
-            </div> --}}
+            </div>
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
@@ -124,5 +130,5 @@ new class extends Component {
                 </button>
             </div>
         </div>
-    </div>
+    </div> --}}
 </nav>
