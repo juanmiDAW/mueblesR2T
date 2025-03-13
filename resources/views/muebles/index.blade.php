@@ -73,6 +73,16 @@
                                                     </a>
                                                 </form>
                                             </td>
+                                            @@if ()
+                                                
+                                            @else
+                                            <td class="px-6 py-4">
+                                                Accion no permitida 
+                                            </td>  
+                                            <td class="px-6 py-4">
+                                                Accion no permitida 
+                                            </td> 
+                                            
                                             @endif
                                         </tr>
                                     @endforeach
